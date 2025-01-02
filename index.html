@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ad Unlock</title>
+    <title>MIYABHAI X CHEATS</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5367179231666485"
             crossorigin="anonymous"></script>
     <style>
-        /* Your previous styles here */
+        /* Styling for the page */
         .hidden { display: none; }
         #timer {
             font-size: 24px;
@@ -28,17 +28,32 @@
             width: 0%;
             animation: loadingBar 60s linear forwards;
         }
+        .ad-banner {
+            margin: 20px 0;
+        }
+        .ad-button {
+            background-color: #ff6f61;
+            color: white;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .ad-button:hover {
+            background-color: #e55d52;
+        }
     </style>
 </head>
 <body>
     <header>MIYABHAI X CHEATS</header>
 
     <div id="step-content">
-        <p id="instruction">Click the button to view the ad. Wait for <span id="timer">20</span> seconds to unlock the link.</p>
-        <button id="ad-button" class="ad-button">Go to Ad</button>
-        <div id="step1-message" class="hidden">Step 1: You are viewing the ad...</div>
-        <div id="step2-message" class="hidden">Step 2: Waiting for the second step...</div>
-        <div id="step3-message" class="hidden">Step 3: Waiting for the final step...</div>
+        <p id="instruction">Click the button to view the ad. Wait for <span id="timer">25</span> seconds to proceed to the next step.</p>
+        <button id="ad-button" class="ad-button">See Ad</button>
+        <div id="step1-message" class="hidden">Step 1: Please watch the ad for 25 seconds...</div>
+        <div id="step2-message" class="hidden">Step 2: Please watch another ad for 25 seconds...</div>
+        <div id="step3-message" class="hidden">Step 3: Please wait for the final 25 seconds...</div>
         <p id="unlocked-message" class="hidden">Link Unlocked! <a href="YOUR_UNLOCKED_LINK_HERE" style="color: #ff6f61;">Access Here</a></p>
         <div id="loading-bar">
             <div id="loading-bar-fill"></div>
@@ -75,7 +90,7 @@
         const loadingBar = document.getElementById('loading-bar-fill');
         let countdown;
         let step = 1;
-        let canProceed = false; // Flag to ensure user can't proceed until 20 sec wait is complete
+        let canProceed = false; // Flag to ensure user can't proceed until 25 sec wait is complete
 
         function startTimer(duration, callback) {
             let timeRemaining = duration;
@@ -96,21 +111,21 @@
         function handleStep() {
             if (step === 1) {
                 step1Message.classList.remove('hidden');
-                startTimer(20, () => {
+                startTimer(25, () => {
                     step1Message.classList.add('hidden');
                     step2Message.classList.remove('hidden');
                     step++;
                     handleStep();
                 });
             } else if (step === 2) {
-                startTimer(20, () => {
+                startTimer(25, () => {
                     step2Message.classList.add('hidden');
                     step3Message.classList.remove('hidden');
                     step++;
                     handleStep();
                 });
             } else if (step === 3) {
-                startTimer(20, () => {
+                startTimer(25, () => {
                     step3Message.classList.add('hidden');
                     unlockedMessage.classList.remove('hidden');
                 });
@@ -119,7 +134,7 @@
 
         function handleAdClick() {
             if (!canProceed) {
-                alert("You must wait for 20 seconds before proceeding.");
+                alert("You must wait for 25 seconds before proceeding.");
                 return;
             }
             adButton.classList.add('hidden');
@@ -144,11 +159,11 @@
         function onAdLinkComplete() {
             setTimeout(() => {
                 canProceed = true;
-                alert("You can now proceed after completing the 20-second wait.");
-            }, 20000); // Ensure the user stays on the ad page for 20 seconds
+                alert("You can now proceed after completing the 25-second wait.");
+            }, 25000); // Ensure the user stays on the ad page for 25 seconds
         }
 
-        // Simulate an ad completion function for the 20 seconds wait in a new tab
+        // Simulate an ad completion function for the 25 seconds wait in a new tab
         function simulateAdCompletion() {
             onAdLinkComplete();
         }
