@@ -38,6 +38,14 @@
         footer {
             margin-top: 20px;
         }
+        .ad-banner iframe {
+            width: 100%;
+            height: 90px;
+            border: none;
+        }
+        .ad-banner {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -49,11 +57,20 @@
     <div id="step-content">
         <p id="instruction">Click the button to view the ad. You must wait for <span id="timer">20</span> seconds.</p>
         <button id="ad-button" style="background-color: #e76f51; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">View Ad</button>
-        <p id="waiting-message" class="hidden">Waiting for the timer to complete...</p>
+        <p id="waiting-message" class="hidden">Do not start until the timer finishes!</p>
+        <p id="waiting-message2" class="hidden">Waiting for the timer to complete...</p>
         <a id="next-step" class="hidden" href="YOUR_NEXT_STEP_LINK_HERE" style="display: inline-block; margin-top: 10px; text-decoration: none; color: #264653;">Next Step</a>
     </div>
 
-    <!-- Ad Section -->
+    <!-- Adsterra Banner Ads -->
+    <div class="ad-banner">
+        <iframe src="https://bigincomplete.com/bh47yury?key=e4efed7eca8f2a54a962e24d68ccda94" width="728" height="90"></iframe>
+    </div>
+    <div class="ad-banner">
+        <iframe src="https://bigincomplete.com/18/5b/a1/185ba1420ea35726d90e5a8be7a08046.js" width="728" height="90"></iframe>
+    </div>
+
+    <!-- Google AdSense Banner -->
     <div class="ad-banner">
         <ins class="adsbygoogle"
             style="display:block"
@@ -72,10 +89,12 @@
         const adButton = document.getElementById('ad-button');
         const timerElement = document.getElementById('timer');
         const waitingMessage = document.getElementById('waiting-message');
+        const waitingMessage2 = document.getElementById('waiting-message2');
         const nextStepLink = document.getElementById('next-step');
 
         let countdown;
 
+        // Function to start the timer
         function startTimer(duration, callback) {
             let timeRemaining = duration;
             timerElement.textContent = timeRemaining;
@@ -91,14 +110,20 @@
             }, 1000);
         }
 
+        // When ad button is clicked
         adButton.addEventListener('click', (e) => {
             e.preventDefault();
+            // Open the Ad link in a new tab
+            window.open('https://bigincomplete.com/bh47yury?key=e4efed7eca8f2a54a962e24d68ccda94', '_blank');
+
+            // Hide the button and show waiting messages
             adButton.classList.add('hidden');
             waitingMessage.classList.remove('hidden');
+            waitingMessage2.classList.remove('hidden');
 
-            // Start the timer for 20 seconds
+            // Start the 20-second timer
             startTimer(20, () => {
-                waitingMessage.classList.add('hidden');
+                waitingMessage2.classList.add('hidden');
                 nextStepLink.classList.remove('hidden');
             });
         });
