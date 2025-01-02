@@ -63,31 +63,6 @@
             margin: 20px 0;
         }
 
-        /* Progress bar Styles */
-        #loading-bar {
-            width: 100%;
-            height: 25px;
-            background-color: #f0f0f0;
-            border-radius: 15px;
-            margin-top: 30px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        #loading-bar-fill {
-            height: 100%;
-            background-color: #ff6f61;
-            width: 0%;
-            animation: loadingBar 75s linear forwards;
-            border-radius: 15px;
-        }
-
-        @keyframes loadingBar {
-            0% { width: 0%; }
-            100% { width: 100%; }
-        }
-
-        /* Unlocked Message */
         #unlocked-message {
             font-size: 24px;
             font-weight: bold;
@@ -97,17 +72,10 @@
             transition: opacity 1s ease-in-out;
         }
 
-        #unlocked-message a {
-            color: #00e676;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
         #unlocked-message.show {
             opacity: 1;
         }
 
-        /* Step Messages Animation */
         .step-message {
             font-size: 18px;
             color: #fff;
@@ -128,7 +96,7 @@
     <header>MIYABHAI X CHEATS</header>
 
     <div id="step-content">
-        <p id="instruction">Click the button to view the ad. Wait for <span id="timer">25</span> seconds to proceed to the next step.</p>
+        <p id="instruction">Click the button to view the ad. Wait for 25 seconds to proceed to the next step.</p>
         <button id="ad-button" class="ad-button">See Ad</button>
 
         <!-- Step Messages -->
@@ -138,11 +106,6 @@
 
         <!-- Unlocked Link -->
         <p id="unlocked-message" class="hidden">Link Unlocked! <a href="YOUR_UNLOCKED_LINK_HERE" target="_blank">Access Here</a></p>
-
-        <!-- Loading Bar -->
-        <div id="loading-bar">
-            <div id="loading-bar-fill"></div>
-        </div>
     </div>
 
     <!-- Adsterra Banner Section -->
@@ -169,66 +132,38 @@
     </footer>
 
     <script>
-        const timerElement = document.getElementById('timer');
         const adButton = document.getElementById('ad-button');
         const unlockedMessage = document.getElementById('unlocked-message');
         const step1Message = document.getElementById('step1-message');
         const step2Message = document.getElementById('step2-message');
         const step3Message = document.getElementById('step3-message');
-        const loadingBar = document.getElementById('loading-bar-fill');
-        let countdown;
         let step = 1;
         let canProceed = false;
 
-        function startTimer(duration, callback) {
-            let timeRemaining = duration;
-            timerElement.textContent = timeRemaining;
-
-            countdown = setInterval(() => {
-                timeRemaining--;
-                timerElement.textContent = timeRemaining;
-                loadingBar.style.width = `${(1 - (timeRemaining / duration)) * 100}%`;
-
-                if (timeRemaining <= 0) {
-                    clearInterval(countdown);
-                    callback();
-                }
-            }, 1000);
-        }
-
-        function handleStep() {
-            if (step === 1) {
-                step1Message.classList.remove('hidden');
-                startTimer(25, () => {
-                    step1Message.classList.add('hidden');
-                    step2Message.classList.remove('hidden');
-                    step++;
-                    handleStep();
-                });
-            } else if (step === 2) {
-                startTimer(25, () => {
-                    step2Message.classList.add('hidden');
-                    step3Message.classList.remove('hidden');
-                    step++;
-                    handleStep();
-                });
-            } else if (step === 3) {
-                startTimer(25, () => {
-                    step3Message.classList.add('hidden');
-                    unlockedMessage.classList.add('show');
-                });
+        function startStep(stepNumber) {
+            switch (stepNumber) {
+                case 1:
+                    step1Message.classList.remove('hidden');
+                    setTimeout(() => {
+                        step1Message.classList.add('hidden');
+                        step2Message.classList.remove('hidden');
+                        step++;
+                    }, 25000); // Wait for 25 seconds before moving to next step
+                    break;
+                case 2:
+                    setTimeout(() => {
+                        step2Message.classList.add('hidden');
+                        step3Message.classList.remove('hidden');
+                        step++;
+                    }, 25000); // Wait for another 25 seconds
+                    break;
+                case 3:
+                    setTimeout(() => {
+                        step3Message.classList.add('hidden');
+                        unlockedMessage.classList.add('show');
+                    }, 25000); // Wait for the last 25 seconds
+                    break;
             }
-        }
-
-        function handleAdClick(adLink) {
-            if (!canProceed) {
-                alert("You must wait for 25 seconds before proceeding.");
-                return;
-            }
-            adButton.classList.add('hidden');
-            window.open(adLink, '_blank'); // Open the ad link in a new tab
-            canProceed = false;
-            handleStep();
         }
 
         adButton.addEventListener('click', (e) => {
@@ -244,19 +179,10 @@
                 adLink = 'https://bigincomplete.com/h0e388e4?key=02608a427a7ed2ce362e79004ee44cf1'; // Step 3
             }
 
-            handleAdClick(adLink);
+            window.open(adLink, '_blank'); // Open the ad link in a new tab
+            canProceed = false;
+            startStep(step); // Start the next step
         });
-
-        function onAdLinkComplete() {
-            setTimeout(() => {
-                canProceed = true;
-                alert("You can now proceed after completing the 25-second wait.");
-            }, 25000);
-        }
-
-        function simulateAdCompletion() {
-            onAdLinkComplete();
-        }
     </script>
 </body>
 </html>
