@@ -143,4 +143,120 @@
         <div id="loading-bar">
             <div id="loading-bar-fill"></div>
         </div>
-   
+    </div>
+
+    <!-- Adsterra Banner Section -->
+    <div class="ad-banner">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : 'e90e6c1e358b0d90abdd072185bdf2b7',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//bigincomplete.com/e90e6c1e358b0d90abdd072185bdf2b7/invoke.js"></script>
+    </div>
+
+    <!-- Popunder Script -->
+    <script type="text/javascript" src="https://bigincomplete.com/18/5b/a1/185ba1420ea35726d90e5a8be7a08046.js"></script>
+
+    <footer>
+        <a href="https://facebook.com" style="color: #fff; margin: 0 10px;">Facebook</a>
+        <a href="https://twitter.com" style="color: #fff; margin: 0 10px;">Twitter</a>
+        <a href="https://instagram.com" style="color: #fff; margin: 0 10px;">Instagram</a>
+    </footer>
+
+    <script>
+        const timerElement = document.getElementById('timer');
+        const adButton = document.getElementById('ad-button');
+        const unlockedMessage = document.getElementById('unlocked-message');
+        const step1Message = document.getElementById('step1-message');
+        const step2Message = document.getElementById('step2-message');
+        const step3Message = document.getElementById('step3-message');
+        const loadingBar = document.getElementById('loading-bar-fill');
+        let countdown;
+        let step = 1;
+        let canProceed = false;
+
+        function startTimer(duration, callback) {
+            let timeRemaining = duration;
+            timerElement.textContent = timeRemaining;
+
+            countdown = setInterval(() => {
+                timeRemaining--;
+                timerElement.textContent = timeRemaining;
+                loadingBar.style.width = `${(1 - (timeRemaining / duration)) * 100}%`;
+
+                if (timeRemaining <= 0) {
+                    clearInterval(countdown);
+                    callback();
+                }
+            }, 1000);
+        }
+
+        function handleStep() {
+            if (step === 1) {
+                step1Message.classList.remove('hidden');
+                startTimer(25, () => {
+                    step1Message.classList.add('hidden');
+                    step2Message.classList.remove('hidden');
+                    step++;
+                    handleStep();
+                });
+            } else if (step === 2) {
+                startTimer(25, () => {
+                    step2Message.classList.add('hidden');
+                    step3Message.classList.remove('hidden');
+                    step++;
+                    handleStep();
+                });
+            } else if (step === 3) {
+                startTimer(25, () => {
+                    step3Message.classList.add('hidden');
+                    unlockedMessage.classList.add('show');
+                });
+            }
+        }
+
+        function handleAdClick(adLink) {
+            if (!canProceed) {
+                alert("You must wait for 25 seconds before proceeding.");
+                return;
+            }
+            adButton.classList.add('hidden');
+            window.open(adLink, '_blank'); // Open the ad link in a new tab
+            canProceed = false;
+            handleStep();
+        }
+
+        adButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            let adLink;
+
+            // Assign correct link based on the step
+            if (step === 1) {
+                adLink = 'https://bigincomplete.com/bh47yury?key=e4efed7eca8f2a54a962e24d68ccda94'; // Step 1
+            } else if (step === 2) {
+                adLink = 'https://bigincomplete.com/qdkgpph4c?key=267f24069a8ec62c7fb0d6cc15907257'; // Step 2
+            } else if (step === 3) {
+                adLink = 'https://bigincomplete.com/h0e388e4?key=02608a427a7ed2ce362e79004ee44cf1'; // Step 3
+            }
+
+            handleAdClick(adLink);
+        });
+
+        function onAdLinkComplete() {
+            setTimeout(() => {
+                canProceed = true;
+                alert("You can now proceed after completing the 25-second wait.");
+            }, 25000);
+        }
+
+        function simulateAdCompletion() {
+            onAdLinkComplete();
+        }
+    </script>
+</body>
+</html>
