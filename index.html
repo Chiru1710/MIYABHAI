@@ -112,6 +112,7 @@
         <p id="unlocked-message" class="hidden unlocked">Link Unlocked! <a href="YOUR_UNLOCKED_LINK_HERE" style="color: #e63946; text-decoration: none;">Access Here</a></p>
     </div>
 
+    <!-- Ad Banner Sections -->
     <div class="ad-banner">
         <iframe src="https://bigincomplete.com/e90e6c1e358b0d90abdd072185bdf2b7/invoke.js"></iframe>
     </div>
@@ -119,6 +120,7 @@
         <iframe src="https://bigincomplete.com/9885b978b324232f20d51fd9488830ce/invoke.js"></iframe>
     </div>
 
+    <!-- Social Bar with Ad Links -->
     <div class="social-bar">
         <a href="https://bigincomplete.com/bh47yury?key=e4efed7eca8f2a54a962e24d68ccda94" target="_blank">Ad 1</a>
         <a href="https://bigincomplete.com/bh47yury?key=e4efed7eca8f2a54a962e24d68ccda94" target="_blank">Ad 2</a>
@@ -138,6 +140,7 @@
         const unlockedMessage = document.getElementById('unlocked-message');
         let countdown;
 
+        // Function to start the 20-second timer
         function startTimer(duration, callback) {
             let timeRemaining = duration;
             timerElement.textContent = timeRemaining;
@@ -153,6 +156,7 @@
             }, 1000);
         }
 
+        // Function to handle the ad click
         function handleAdClick() {
             adButton.classList.add('hidden');
             startTimer(20, () => {
@@ -160,6 +164,7 @@
             });
         }
 
+        // Event listener for ad button
         adButton.addEventListener('click', (e) => {
             e.preventDefault();
             const adLink = 'https://bigincomplete.com/bh47yury?key=e4efed7eca8f2a54a962e24d68ccda94'; // Replace with your Adsterra ad link
@@ -172,6 +177,7 @@
             }
         });
 
+        // Event listener for next step link
         nextStepLink.addEventListener('click', (e) => {
             e.preventDefault();
             unlockedMessage.classList.remove('hidden');
