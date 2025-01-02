@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ad Unlock</title>
     <style>
+        /* Add your styles here */
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -12,89 +13,136 @@
             background-color: #f0f4f8;
             color: #333;
         }
+
         header {
             font-size: 36px;
             font-weight: bold;
             margin-bottom: 20px;
             color: #2a9d8f;
         }
+
         #step-content {
             margin: 20px;
             padding: 20px;
             border: 1px solid #ddd;
             border-radius: 5px;
             background: #ffffff;
-            display: inline-block;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         #timer {
             font-size: 24px;
             color: #e63946;
-            margin-top: 10px;
         }
+
         .hidden {
             display: none;
         }
-        footer {
-            margin-top: 20px;
+
+        .unlocked {
+            color: #2a9d8f;
+            font-weight: bold;
         }
-        .ad-banner iframe {
+
+        footer {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            background-color: #264653;
+            padding: 10px 0;
+        }
+
+        footer a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #e9c46a;
+        }
+
+        .ad-banner {
+            margin: 10px auto;
+            display: block;
+            text-align: center;
+            width: 300px;
+        }
+
+        .social-bar {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            background-color: #264653;
+            padding: 10px;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .social-bar a {
+            display: block;
+            margin: 10px 0;
+            color: #e9c46a;
+            text-decoration: none;
+        }
+
+        iframe {
             width: 100%;
             height: 90px;
             border: none;
-        }
-        .ad-banner {
-            margin-top: 20px;
+            overflow: hidden;
         }
     </style>
-</head>
-<body>
-    <header>Ad Unlock System</header>
 
     <!-- Google AdSense Script -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5367179231666485" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>MIYABHAI X CHEATS</header>
 
     <div id="step-content">
-        <p id="instruction">Click the button to view the ad. You must wait for <span id="timer">20</span> seconds.</p>
-        <button id="ad-button" style="background-color: #e76f51; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">View Ad</button>
-        <p id="waiting-message" class="hidden">Do not start until the timer finishes!</p>
-        <p id="waiting-message2" class="hidden">Waiting for the timer to complete...</p>
-        <a id="next-step" class="hidden" href="YOUR_NEXT_STEP_LINK_HERE" style="display: inline-block; margin-top: 10px; text-decoration: none; color: #264653;">Next Step</a>
+        <p id="instruction">Click the button to view the ad. Wait for <span id="timer">20</span> seconds after clicking.</p>
+        <button id="ad-button" style="background-color: #e76f51; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Go to Ad</button>
+        <a id="next-step" class="hidden" href="#" style="display: inline-block; margin-top: 10px; text-decoration: none; color: #264653;">Next Step</a>
+        <p id="unlocked-message" class="hidden unlocked">Link Unlocked! <a href="YOUR_UNLOCKED_LINK_HERE" style="color: #e63946; text-decoration: none;">Access Here</a></p>
     </div>
 
-    <!-- Adsterra Banner Ads -->
     <div class="ad-banner">
-        <iframe src="https://bigincomplete.com/bh47yury?key=e4efed7eca8f2a54a962e24d68ccda94" width="728" height="90"></iframe>
-    </div>
-    <div class="ad-banner">
-        <iframe src="https://bigincomplete.com/18/5b/a1/185ba1420ea35726d90e5a8be7a08046.js" width="728" height="90"></iframe>
+        <!-- Adsterra Banner -->
+        <iframe src="https://bigincomplete.com/e90e6c1e358b0d90abdd072185bdf2b7/invoke.js"></iframe>
     </div>
 
-    <!-- Google AdSense Banner -->
     <div class="ad-banner">
+        <!-- Google AdSense Banner -->
         <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
+             style="display:block"
+             data-ad-client="ca-pub-5367179231666485"
+             data-ad-slot="your-ad-slot-id"
+             data-ad-format="auto"></ins>
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
     </div>
 
+    <div class="social-bar">
+        <a href="https://bigincomplete.com/bh47yury?key=e4efed7eca8f2a54a962e24d68ccda94" target="_blank">Ad 1</a>
+        <a href="https://bigincomplete.com/bh47yury?key=e4efed7eca8f2a54a962e24d68ccda94" target="_blank">Ad 2</a>
+        <a href="https://bigincomplete.com/bh47yury?key=e4efed7eca8f2a54a962e24d68ccda94" target="_blank">Ad 3</a>
+    </div>
+
     <footer>
-        <p>&copy; 2025 Ad Unlock System</p>
+        <a href="https://facebook.com">Facebook</a>
+        <a href="https://twitter.com">Twitter</a>
+        <a href="https://instagram.com">Instagram</a>
     </footer>
 
     <script>
-        const adButton = document.getElementById('ad-button');
-        const timerElement = document.getElementById('timer');
-        const waitingMessage = document.getElementById('waiting-message');
-        const waitingMessage2 = document.getElementById('waiting-message2');
-        const nextStepLink = document.getElementById('next-step');
-
+        const steps = 3;
+        let currentStep = 1;
         let countdown;
 
-        // Function to start the timer
+        const timerElement = document.getElementById('timer');
+        const instructionElement = document.getElementById('instruction');
+        const adButton = document.getElementById('ad-button');
+        const nextStepLink = document.getElementById('next-step');
+        const unlockedMessage = document.getElementById('unlocked-message');
+
         function startTimer(duration, callback) {
             let timeRemaining = duration;
             timerElement.textContent = timeRemaining;
@@ -110,22 +158,42 @@
             }, 1000);
         }
 
-        // When ad button is clicked
+        function handleAdClick() {
+            adButton.classList.add('hidden');
+            instructionElement.textContent = `Wait for 20 seconds...`;
+
+            startTimer(20, () => {
+                if (currentStep < steps) {
+                    nextStepLink.classList.remove('hidden');
+                } else {
+                    unlockedMessage.classList.remove('hidden');
+                    instructionElement.classList.add('hidden');
+                }
+            });
+        }
+
+        function goToNextStep() {
+            currentStep++;
+            nextStepLink.classList.add('hidden');
+            adButton.classList.remove('hidden');
+            instructionElement.textContent = `Step ${currentStep}: Click the button to view the ad. Wait for 20 seconds after clicking.`;
+        }
+
         adButton.addEventListener('click', (e) => {
             e.preventDefault();
-            // Open the Ad link in a new tab
-            window.open('https://bigincomplete.com/bh47yury?key=e4efed7eca8f2a54a962e24d68ccda94', '_blank');
+            const adLink = 'https://bigincomplete.com/bh47yury?key=e4efed7eca8f2a54a962e24d68ccda94'; // Replace with your Adsterra ad link
 
-            // Hide the button and show waiting messages
-            adButton.classList.add('hidden');
-            waitingMessage.classList.remove('hidden');
-            waitingMessage2.classList.remove('hidden');
+            if (adLink) {
+                window.open(adLink, '_blank');
+                handleAdClick();
+            } else {
+                alert('Ad link is not configured properly.');
+            }
+        });
 
-            // Start the 20-second timer
-            startTimer(20, () => {
-                waitingMessage2.classList.add('hidden');
-                nextStepLink.classList.remove('hidden');
-            });
+        nextStepLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            goToNextStep();
         });
     </script>
 </body>
