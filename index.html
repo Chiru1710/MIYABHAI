@@ -7,61 +7,13 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5367179231666485"
             crossorigin="anonymous"></script>
     <style>
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes loadingBar {
-            0% { width: 0%; }
-            100% { width: 100%; }
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-            padding: 40px;
-            background-color: #f0f4f8;
-            color: #333;
-            margin: 0;
-        }
-
-        header {
-            font-size: 40px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #ff6f61;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .watermark {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 70px;
-            color: rgba(255, 111, 97, 0.1);
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        #step-content {
-            margin: 40px;
-            padding: 30px;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            background: linear-gradient(145deg, #ffffff, #f7f7f7);
-            display: inline-block;
-            animation: fadeIn 1s ease-in-out;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
+        /* Your previous styles here */
+        .hidden { display: none; }
         #timer {
             font-size: 24px;
             color: #f6a800;
             font-weight: bold;
         }
-
         #loading-bar {
             width: 100%;
             height: 20px;
@@ -70,108 +22,24 @@
             margin-top: 20px;
             overflow: hidden;
         }
-
         #loading-bar-fill {
             height: 100%;
             background-color: #ff6f61;
             width: 0%;
             animation: loadingBar 60s linear forwards;
         }
-
-        .hidden {
-            display: none;
-        }
-
-        .unlocked {
-            color: #32a852;
-            font-weight: bold;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        .step-message {
-            font-size: 20px;
-            font-weight: bold;
-            color: #2d3748;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        .ad-button {
-            background-color: #ff6f61;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 20px;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        .ad-button:hover {
-            transform: scale(1.1);
-            background-color: #f6a800;
-        }
-
-        footer {
-            position: fixed;
-            bottom: 10px;
-            width: 100%;
-            text-align: center;
-            background-color: #2d3748;
-            padding: 10px 0;
-        }
-
-        footer a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #ff6f61;
-            font-size: 18px;
-        }
-
-        footer a:hover {
-            color: #f6a800;
-        }
-
-        .social-bar {
-            position: fixed;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-            background-color: #2d3748;
-            padding: 20px;
-            border-radius: 0 10px 10px 0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .social-bar a {
-            display: block;
-            margin: 10px 0;
-            color: #ff6f61;
-            text-decoration: none;
-            font-size: 18px;
-            text-align: center;
-        }
-
-        .social-bar a:hover {
-            color: #f6a800;
-        }
-
     </style>
 </head>
 <body>
     <header>MIYABHAI X CHEATS</header>
 
-    <div class="watermark">MIYABHAI X CHEATS</div>
-
     <div id="step-content">
-        <p id="instruction">Click the button to view the ad. Wait for <span id="timer">20</span> seconds in total to unlock the link.</p>
+        <p id="instruction">Click the button to view the ad. Wait for <span id="timer">20</span> seconds to unlock the link.</p>
         <button id="ad-button" class="ad-button">Go to Ad</button>
-        <div id="step1-message" class="step-message hidden">Step 1: You are viewing the ad...</div>
-        <div id="step2-message" class="step-message hidden">Step 2: Waiting for the second step...</div>
-        <div id="step3-message" class="step-message hidden">Step 3: Waiting for the final step...</div>
-        <a id="next-step" class="hidden" href="#">Next Step</a>
-        <p id="unlocked-message" class="hidden unlocked">Link Unlocked! <a href="YOUR_UNLOCKED_LINK_HERE" style="color: #ff6f61; text-decoration: none;">Access Here</a></p>
-
+        <div id="step1-message" class="hidden">Step 1: You are viewing the ad...</div>
+        <div id="step2-message" class="hidden">Step 2: Waiting for the second step...</div>
+        <div id="step3-message" class="hidden">Step 3: Waiting for the final step...</div>
+        <p id="unlocked-message" class="hidden">Link Unlocked! <a href="YOUR_UNLOCKED_LINK_HERE" style="color: #ff6f61;">Access Here</a></p>
         <div id="loading-bar">
             <div id="loading-bar-fill"></div>
         </div>
@@ -191,17 +59,6 @@
         <script type="text/javascript" src="//bigincomplete.com/e90e6c1e358b0d90abdd072185bdf2b7/invoke.js"></script>
     </div>
 
-    <!-- Social Banner Ad Section -->
-    <div class="social-bar">
-        <script type='text/javascript' src='//bigincomplete.com/39/cf/b1/39cfb12de7588bc436f18d7e3e6f675f.js'></script>
-    </div>
-
-    <!-- Native Ad Code Section -->
-    <div id="native-ad-container" style="margin-top: 20px;">
-        <script async="async" data-cfasync="false" src="//bigincomplete.com/9885b978b324232f20d51fd9488830ce/invoke.js"></script>
-        <div id="container-9885b978b324232f20d51fd9488830ce"></div>
-    </div>
-
     <footer>
         <a href="https://facebook.com">Facebook</a>
         <a href="https://twitter.com">Twitter</a>
@@ -211,7 +68,6 @@
     <script>
         const timerElement = document.getElementById('timer');
         const adButton = document.getElementById('ad-button');
-        const nextStepLink = document.getElementById('next-step');
         const unlockedMessage = document.getElementById('unlocked-message');
         const step1Message = document.getElementById('step1-message');
         const step2Message = document.getElementById('step2-message');
@@ -219,6 +75,7 @@
         const loadingBar = document.getElementById('loading-bar-fill');
         let countdown;
         let step = 1;
+        let canProceed = false; // Flag to ensure user can't proceed until 20 sec wait is complete
 
         function startTimer(duration, callback) {
             let timeRemaining = duration;
@@ -261,6 +118,10 @@
         }
 
         function handleAdClick() {
+            if (!canProceed) {
+                alert("You must wait for 20 seconds before proceeding.");
+                return;
+            }
             adButton.classList.add('hidden');
             handleStep();
         }
@@ -269,19 +130,28 @@
             e.preventDefault();
             const adLink = 'https://bigincomplete.com/bh47yury?key=e4efed7eca8f2a54a962e24d68ccda94';
 
+            // Open the ad link in a new tab
             if (adLink) {
                 window.open(adLink, '_blank');
-                handleAdClick();
+                canProceed = false; // Disable interaction until timer completes
+                handleStep(); // Start timer and waiting process
             } else {
                 alert('Ad link is not configured properly.');
             }
         });
 
-        nextStepLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            unlockedMessage.classList.remove('hidden');
-            nextStepLink.classList.add('hidden');
-        });
+        // Function to handle returning back after the user completes the steps
+        function onAdLinkComplete() {
+            setTimeout(() => {
+                canProceed = true;
+                alert("You can now proceed after completing the 20-second wait.");
+            }, 20000); // Ensure the user stays on the ad page for 20 seconds
+        }
+
+        // Simulate an ad completion function for the 20 seconds wait in a new tab
+        function simulateAdCompletion() {
+            onAdLinkComplete();
+        }
     </script>
 
     <!-- Popunder Script -->
