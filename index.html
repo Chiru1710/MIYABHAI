@@ -96,13 +96,16 @@
     <header>MIYABHAI X CHEATS</header>
 
     <div id="step-content">
-        <p id="instruction">Click the button to view the ad. Wait for 25 seconds to proceed to the next step.</p>
+        <p id="instruction">Click the button to view the ad. Wait for 20 seconds to proceed to the next step.</p>
         <button id="ad-button" class="ad-button">See Ad</button>
 
         <!-- Step Messages -->
-        <div id="step1-message" class="hidden step-message">Step 1: Please watch the ad for 25 seconds...</div>
-        <div id="step2-message" class="hidden step-message">Step 2: Please watch another ad for 25 seconds...</div>
-        <div id="step3-message" class="hidden step-message">Step 3: Please wait for the final 25 seconds...</div>
+        <div id="step1-message" class="hidden step-message">Step 1: Please watch the ad for 20 seconds...</div>
+        <div id="step2-message" class="hidden step-message">Step 2: Please watch another ad for 20 seconds...</div>
+        <div id="step3-message" class="hidden step-message">Step 3: Please wait for the final 20 seconds...</div>
+
+        <!-- Countdown Timer -->
+        <div id="timer" class="hidden">Time remaining: 20s</div>
 
         <!-- Unlocked Link -->
         <p id="unlocked-message" class="hidden">Link Unlocked! <a href="YOUR_UNLOCKED_LINK_HERE" target="_blank">Access Here</a></p>
@@ -137,32 +140,61 @@
         const step1Message = document.getElementById('step1-message');
         const step2Message = document.getElementById('step2-message');
         const step3Message = document.getElementById('step3-message');
+        const timer = document.getElementById('timer');
         let step = 1;
-        let canProceed = false;
+        let timerValue = 20;
+        let timerInterval;
 
         function startStep(stepNumber) {
+            // Show the step message and start countdown timer
+            timer.classList.remove('hidden');
+            updateTimer(timerValue);
+
             switch (stepNumber) {
                 case 1:
                     step1Message.classList.remove('hidden');
-                    setTimeout(() => {
-                        step1Message.classList.add('hidden');
-                        step2Message.classList.remove('hidden');
-                        step++;
-                    }, 25000); // Wait for 25 seconds before moving to next step
+                    startCountdown();
                     break;
                 case 2:
-                    setTimeout(() => {
-                        step2Message.classList.add('hidden');
-                        step3Message.classList.remove('hidden');
-                        step++;
-                    }, 25000); // Wait for another 25 seconds
+                    step2Message.classList.remove('hidden');
+                    startCountdown();
                     break;
                 case 3:
-                    setTimeout(() => {
-                        step3Message.classList.add('hidden');
-                        unlockedMessage.classList.add('show');
-                    }, 25000); // Wait for the last 25 seconds
+                    step3Message.classList.remove('hidden');
+                    startCountdown();
                     break;
+            }
+        }
+
+        function startCountdown() {
+            timerInterval = setInterval(() => {
+                timerValue--;
+                updateTimer(timerValue);
+                if (timerValue === 0) {
+                    clearInterval(timerInterval);
+                    timer.classList.add('hidden');
+                    timerValue = 20; // Reset for next step
+                    proceedToNextStep();
+                }
+            }, 1000); // Decrease the time by 1 second each time
+        }
+
+        function updateTimer(seconds) {
+            timer.innerText = `Time remaining: ${seconds}s`;
+        }
+
+        function proceedToNextStep() {
+            if (step === 1) {
+                step1Message.classList.add('hidden');
+                step2Message.classList.remove('hidden');
+                step++;
+            } else if (step === 2) {
+                step2Message.classList.add('hidden');
+                step3Message.classList.remove('hidden');
+                step++;
+            } else if (step === 3) {
+                step3Message.classList.add('hidden');
+                unlockedMessage.classList.add('show');
             }
         }
 
@@ -180,7 +212,6 @@
             }
 
             window.open(adLink, '_blank'); // Open the ad link in a new tab
-            canProceed = false;
             startStep(step); // Start the next step
         });
     </script>
