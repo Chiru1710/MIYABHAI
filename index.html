@@ -4,69 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MIYABHAI X CHEATS</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5367179231666485"
-            crossorigin="anonymous"></script>
     <style>
         body {
-            background: linear-gradient(135deg, #ff6f61, #ffcc00);
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
             color: #fff;
             font-family: 'Arial', sans-serif;
             text-align: center;
-            padding: 30px;
             margin: 0;
+            padding: 0;
+            overflow: hidden;
         }
 
         header {
             font-size: 36px;
             font-weight: bold;
-            color: #fff;
-            margin-bottom: 30px;
+            margin: 20px 0;
             text-transform: uppercase;
         }
 
         #step-content {
             padding: 20px;
             border-radius: 10px;
-            background-color: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.7);
             max-width: 600px;
-            margin: 0 auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 30px auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #timer {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffeb3b;
+        }
+
+        .ad-button {
+            background: #ffeb3b;
+            color: #000;
+            font-size: 18px;
+            padding: 12px 24px;
+            margin: 20px 0;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .ad-button:hover {
+            background: #ff9800;
         }
 
         .hidden {
             display: none;
         }
 
-        #timer {
-            font-size: 28px;
-            color: #fff;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .ad-button {
-            background-color: #ffcc00;
-            color: #000;
-            font-size: 20px;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .ad-button:hover {
-            background-color: #ff6f61;
-        }
-
-        .ad-banner {
-            margin: 20px 0;
-        }
-
         #unlocked-message {
-            font-size: 24px;
-            font-weight: bold;
-            color: #00e676;
+            font-size: 22px;
+            color: #4caf50;
             margin-top: 20px;
             opacity: 0;
             transition: opacity 1s ease-in-out;
@@ -78,10 +71,6 @@
 
         .step-message {
             font-size: 18px;
-            color: #fff;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 10px 20px;
-            border-radius: 10px;
             margin-top: 20px;
             animation: fadeIn 1s ease-out;
         }
@@ -90,129 +79,83 @@
             0% { opacity: 0; }
             100% { opacity: 1; }
         }
+
+        footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
     </style>
 </head>
 <body>
     <header>MIYABHAI X CHEATS</header>
 
     <div id="step-content">
-        <p id="instruction">Click the button to view the ad. Wait for 20 seconds to proceed to the next step.</p>
-        <button id="ad-button" class="ad-button">See Ad</button>
+        <p id="instruction">Follow the steps below to unlock the link. Each step requires a 20-second ad view.</p>
+        <button id="ad-button" class="ad-button">Start Step 1</button>
 
         <!-- Step Messages -->
-        <div id="step1-message" class="hidden step-message">Step 1: Please watch the ad for 20 seconds...</div>
-        <div id="step2-message" class="hidden step-message">Step 2: Please watch another ad for 20 seconds...</div>
-        <div id="step3-message" class="hidden step-message">Step 3: Please wait for the final 20 seconds...</div>
-
-        <!-- Countdown Timer -->
-        <div id="timer" class="hidden">Time remaining: 20s</div>
+        <p id="step-message" class="hidden step-message">Step <span id="current-step">1</span>: Please view the ad for <span id="timer">20</span> seconds...</p>
 
         <!-- Unlocked Link -->
-        <p id="unlocked-message" class="hidden">Link Unlocked! <a href="YOUR_UNLOCKED_LINK_HERE" target="_blank">Access Here</a></p>
+        <p id="unlocked-message" class="hidden">Congratulations! Your link is ready. <a href="https://your-final-link.com" target="_blank" style="color: #4caf50; text-decoration: underline;">Click Here</a></p>
     </div>
 
-    <!-- Adsterra Banner Section -->
-    <div class="ad-banner">
-        <script type="text/javascript">
-            atOptions = {
-                'key' : 'e90e6c1e358b0d90abdd072185bdf2b7',
-                'format' : 'iframe',
-                'height' : 90,
-                'width' : 728,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="//bigincomplete.com/e90e6c1e358b0d90abdd072185bdf2b7/invoke.js"></script>
-    </div>
-
-    <!-- Popunder Script -->
-    <script type="text/javascript" src="https://bigincomplete.com/18/5b/a1/185ba1420ea35726d90e5a8be7a08046.js"></script>
-
-    <footer>
-        <a href="https://facebook.com" style="color: #fff; margin: 0 10px;">Facebook</a>
-        <a href="https://twitter.com" style="color: #fff; margin: 0 10px;">Twitter</a>
-        <a href="https://instagram.com" style="color: #fff; margin: 0 10px;">Instagram</a>
-    </footer>
+    <footer>© 2025 MIYABHAI X CHEATS</footer>
 
     <script>
         const adButton = document.getElementById('ad-button');
+        const stepMessage = document.getElementById('step-message');
+        const timerElement = document.getElementById('timer');
         const unlockedMessage = document.getElementById('unlocked-message');
-        const step1Message = document.getElementById('step1-message');
-        const step2Message = document.getElementById('step2-message');
-        const step3Message = document.getElementById('step3-message');
-        const timer = document.getElementById('timer');
+        const currentStep = document.getElementById('current-step');
+        const instruction = document.getElementById('instruction');
+
         let step = 1;
         let timerValue = 20;
-        let timerInterval;
 
-        function startStep(stepNumber) {
-            // Show the step message and start countdown timer
-            timer.classList.remove('hidden');
-            updateTimer(timerValue);
+        const adLinks = [
+            "https://bigincomplete.com/bh47yury?key=e4efed7eca8f2a54a962e24d68ccda94", // Step 1
+            "https://bigincomplete.com/qdkgpph4c?key=267f24069a8ec62c7fb0d6cc15907257", // Step 2
+            "https://bigincomplete.com/h0e388e4?key=02608a427a7ed2ce362e79004ee44cf1"  // Step 3
+        ];
 
-            switch (stepNumber) {
-                case 1:
-                    step1Message.classList.remove('hidden');
-                    startCountdown();
-                    break;
-                case 2:
-                    step2Message.classList.remove('hidden');
-                    startCountdown();
-                    break;
-                case 3:
-                    step3Message.classList.remove('hidden');
-                    startCountdown();
-                    break;
-            }
-        }
+        function startTimer() {
+            stepMessage.classList.remove('hidden');
+            adButton.classList.add('hidden');
+            instruction.classList.add('hidden');
 
-        function startCountdown() {
-            timerInterval = setInterval(() => {
+            const interval = setInterval(() => {
                 timerValue--;
-                updateTimer(timerValue);
+                timerElement.textContent = timerValue;
+
                 if (timerValue === 0) {
-                    clearInterval(timerInterval);
-                    timer.classList.add('hidden');
-                    timerValue = 20; // Reset for next step
+                    clearInterval(interval);
                     proceedToNextStep();
                 }
-            }, 1000); // Decrease the time by 1 second each time
-        }
-
-        function updateTimer(seconds) {
-            timer.innerText = `Time remaining: ${seconds}s`;
+            }, 1000);
         }
 
         function proceedToNextStep() {
-            if (step === 1) {
-                step1Message.classList.add('hidden');
-                step2Message.classList.remove('hidden');
+            if (step < 3) {
                 step++;
-            } else if (step === 2) {
-                step2Message.classList.add('hidden');
-                step3Message.classList.remove('hidden');
-                step++;
-            } else if (step === 3) {
-                step3Message.classList.add('hidden');
+                currentStep.textContent = step;
+                timerValue = 20;
+                stepMessage.classList.add('hidden');
+                adButton.textContent = `Start Step ${step}`;
+                adButton.classList.remove('hidden');
+                window.open(adLinks[step - 1], '_blank');
+            } else {
+                stepMessage.classList.add('hidden');
                 unlockedMessage.classList.add('show');
             }
         }
 
-        adButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            let adLink;
-
-            // Assign correct link based on the step
-            if (step === 1) {
-                adLink = 'https://bigincomplete.com/bh47yury?key=e4efed7eca8f2a54a962e24d68ccda94'; // Step 1
-            } else if (step === 2) {
-                adLink = 'https://bigincomplete.com/qdkgpph4c?key=267f24069a8ec62c7fb0d6cc15907257'; // Step 2
-            } else if (step === 3) {
-                adLink = 'https://bigincomplete.com/h0e388e4?key=02608a427a7ed2ce362e79004ee44cf1'; // Step 3
+        adButton.addEventListener('click', () => {
+            if (step <= 3) {
+                window.open(adLinks[step - 1], '_blank');
+                startTimer();
             }
-
-            window.open(adLink, '_blank'); // Open the ad link in a new tab
-            startStep(step); // Start the next step
         });
     </script>
 </body>
