@@ -22,7 +22,7 @@
             text-transform: uppercase;
         }
 
-        #step-content {
+        #content {
             padding: 20px;
             border-radius: 10px;
             background: rgba(0, 0, 0, 0.7);
@@ -31,13 +31,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
-        #timer {
-            font-size: 28px;
-            font-weight: bold;
-            color: #ffeb3b;
-        }
-
-        .ad-button {
+        .button {
             background: #ffeb3b;
             color: #000;
             font-size: 18px;
@@ -49,8 +43,14 @@
             transition: all 0.3s ease;
         }
 
-        .ad-button:hover {
+        .button:hover {
             background: #ff9800;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .hidden {
@@ -61,43 +61,18 @@
             font-size: 22px;
             color: #4caf50;
             margin-top: 20px;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        #unlocked-message.show {
-            opacity: 1;
-        }
-
-        .step-message {
-            font-size: 18px;
-            margin-top: 20px;
-            animation: fadeIn 1s ease-out;
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        footer {
-            margin-top: 20px;
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
         }
     </style>
 </head>
 <body>
     <header>MIYABHAI X CHEATS</header>
 
-    <div id="step-content">
-        <p id="instruction">Follow the steps below to unlock the link. Each step requires a 20-second ad view.</p>
-        <button id="ad-button" class="ad-button">Start Step 1</button>
-
-        <!-- Step Messages -->
-        <p id="step-message" class="hidden step-message">Step <span id="current-step">1</span>: Please view the ad for <span id="timer">20</span> seconds...</p>
-
-        <!-- Unlocked Link -->
+    <div id="content">
+        <p id="instruction">To unlock the final link, please subscribe to the YouTube channel and join the Discord server.</p>
+        
+        <button id="subscribe-button" class="button">Subscribe to YouTube</button>
+        <button id="discord-button" class="button hidden">Join Discord</button>
+        
         <p id="unlocked-message" class="hidden">Congratulations! Your link is ready. <a href="https://your-final-link.com" target="_blank" style="color: #4caf50; text-decoration: underline;">Click Here</a></p>
     </div>
 
@@ -114,58 +89,20 @@
     <footer>© 2025 MIYABHAI X CHEATS</footer>
 
     <script>
-        const adButton = document.getElementById('ad-button');
-        const stepMessage = document.getElementById('step-message');
-        const timerElement = document.getElementById('timer');
+        const subscribeButton = document.getElementById('subscribe-button');
+        const discordButton = document.getElementById('discord-button');
         const unlockedMessage = document.getElementById('unlocked-message');
-        const currentStep = document.getElementById('current-step');
-        const instruction = document.getElementById('instruction');
 
-        let step = 1;
-        let timerValue = 20;
+        subscribeButton.addEventListener('click', () => {
+            window.open('https://www.youtube.com/channel/your-channel-id', '_blank');
+            subscribeButton.classList.add('hidden');
+            discordButton.classList.remove('hidden');
+        });
 
-        const adLinks = [
-            "https://bigincomplete.com/bh47yury?key=e4efed7eca8f2a54a962e24d68ccda94", // Step 1
-            "https://bigincomplete.com/qdkgpph4c?key=267f24069a8ec62c7fb0d6cc15907257", // Step 2
-            "https://bigincomplete.com/h0e388e4?key=02608a427a7ed2ce362e79004ee44cf1"  // Step 3
-        ];
-
-        function startTimer() {
-            stepMessage.classList.remove('hidden');
-            adButton.classList.add('hidden');
-            instruction.classList.add('hidden');
-
-            const interval = setInterval(() => {
-                timerValue--;
-                timerElement.textContent = timerValue;
-
-                if (timerValue === 0) {
-                    clearInterval(interval);
-                    proceedToNextStep();
-                }
-            }, 1000);
-        }
-
-        function proceedToNextStep() {
-            if (step < 3) {
-                step++;
-                currentStep.textContent = step;
-                timerValue = 20;
-                stepMessage.classList.add('hidden');
-                adButton.textContent = `Start Step ${step}`;
-                adButton.classList.remove('hidden');
-                window.open(adLinks[step - 1], '_blank');
-            } else {
-                stepMessage.classList.add('hidden');
-                unlockedMessage.classList.add('show');
-            }
-        }
-
-        adButton.addEventListener('click', () => {
-            if (step <= 3) {
-                window.open(adLinks[step - 1], '_blank');
-                startTimer();
-            }
+        discordButton.addEventListener('click', () => {
+            window.open('https://discord.gg/your-server-id', '_blank');
+            discordButton.classList.add('hidden');
+            unlockedMessage.classList.remove('hidden');
         });
     </script>
 </body>
