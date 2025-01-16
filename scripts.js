@@ -10,15 +10,24 @@ const SCOPES = 'https://www.googleapis.com/auth/youtube.readonly';
 function authenticate() {
     return gapi.auth2.getAuthInstance()
         .signIn()
-        .then(() => console.log('Sign-in successful'))
-        .catch((err) => console.error('Error signing in', err));
+        .then(() => {
+            console.log('Sign-in successful');
+            return loadClient();
+        })
+        .catch((err) => {
+            console.error('Error signing in', err);
+            alert('Authentication failed. Please try again.');
+        });
 }
 
 function loadClient() {
     gapi.client.setApiKey(API_KEY);
     return gapi.client.load('https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest')
         .then(() => console.log('GAPI client loaded for API'))
-        .catch((err) => console.error('Error loading GAPI client for API', err));
+        .catch((err) => {
+            console.error('Error loading GAPI client for API', err);
+            alert('Failed to load YouTube API. Please try again later.');
+        });
 }
 
 function checkSubscription() {
@@ -30,8 +39,8 @@ function checkSubscription() {
         })
         .then((response) => {
             const subscriptions = response.result.items || [];
-            const isSubscribed = subscriptions.some((item) =>
-                item.snippet.resourceId.channelId === CHANNEL_ID
+            const isSubscribed = subscriptions.some(
+                (item) => item.snippet.resourceId.channelId === CHANNEL_ID
             );
 
             if (isSubscribed) {
@@ -44,14 +53,25 @@ function checkSubscription() {
         })
         .catch((err) => {
             console.error('Error checking subscriptions:', err);
-            alert('There was an error verifying your subscription. Please try again later.');
+            alert(
+                'Unable to verify subscription. Ensure your subscriptions are public and try again.'
+            );
         });
 }
 
+// Initialize Google Auth2 Library
+function initClient() {
+    gapi.load('client:auth2', () => {
+        gapi.auth2.init({
+            client_id: CLIENT_ID,
+            scope: SCOPES,
+        });
+    });
+}
+
+// Event Listeners
 subscribeButton.addEventListener('click', () => {
-    authenticate()
-        .then(loadClient)
-        .then(checkSubscription);
+    authenticate().then(checkSubscription);
 });
 
 discordButton.addEventListener('click', () => {
@@ -59,3 +79,7 @@ discordButton.addEventListener('click', () => {
     discordButton.classList.add('hidden');
     unlockedMessage.classList.remove('hidden');
 });
+
+// Load Google API on page load
+window.onload = initClient;
+
