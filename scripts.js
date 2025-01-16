@@ -65,6 +65,10 @@ function initClient() {
         gapi.auth2.init({
             client_id: CLIENT_ID,
             scope: SCOPES,
+        }).then(() => {
+            console.log('Google Auth2 initialized successfully.');
+        }).catch((err) => {
+            console.error('Error initializing Google Auth2:', err);
         });
     });
 }
